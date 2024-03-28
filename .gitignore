@@ -1,0 +1,16 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*Rproj
+
+# Not track csv datafiles.
+*.csv
+*.dta
+
+# Specific files
+*.txt
+
+# Specific folders
+3_docs/paper
+
