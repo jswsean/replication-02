@@ -23,7 +23,7 @@ import csv
 #==================================================================================================#
 
 # Adjust the paths to actual location.
-# locbound = 'hein-bound/'
+locbound = '1_raw/usa/hein-bound/'
 locdaily = '1_raw/usa/hein-daily/'
 output_file = '2_build/congress'
 
@@ -68,55 +68,55 @@ presidentmap = {43 : 'R', 44 : 'R', 45 : 'R', 46 : 'R', 47 : 'R', 48 : 'R',
 if __name__=="__main__":
 
     with open(output_file, 'w', encoding='utf-8') as out_:
-        # for i in range(43,112):
-        #     house_majority = housemap[i]
-        #     senate_majority = senatemap[i]
-        #     president = presidentmap[i]
+        for i in range(43,112):
+            house_majority = housemap[i]
+            senate_majority = senatemap[i]
+            president = presidentmap[i]
 
-        #     record_name = 'speeches_%03d.txt' % i
-        #     meta_name = '%03d_SpeakerMap.txt' % i
+            record_name = 'speeches_%03d.txt' % i
+            meta_name = '%03d_SpeakerMap.txt' % i
 
-        #     # Collecting speech file (bound edition).
-        #     speeches=[]
-        #     with open(locbound + record_name, encoding='latin_1') as f:
-        #         for line in f:
-        #             ls = line.split('|')
-        #             text = ls[1].encode('utf-8').decode('latin-1')
-        #             text = text.replace('\t',' ').replace('\n',' ').replace('\r',' ')
-        #             speeches.append((str(ls[0]), text))
-        #     df = pd.DataFrame(speeches)
-        #     df.columns = ['speech_id','speech']
+            # Collecting speech file (bound edition).
+            speeches=[]
+            with open(locbound + record_name, encoding='latin_1') as f:
+                for line in f:
+                    ls = line.split('|')
+                    text = ls[1].encode('utf-8').decode('latin-1')
+                    text = text.replace('\t',' ').replace('\n',' ').replace('\r',' ')
+                    speeches.append((str(ls[0]), text))
+            df = pd.DataFrame(speeches)
+            df.columns = ['speech_id','speech']
 
-        #     # Collecting meta data.
-        #     metadf = pd.read_table(locbound + meta_name, sep="|", header=0, encoding='utf-8', dtype=object)
-        #     metadf = metadf[metadf.nonvoting=='voting']
-        #     metadf['namec'] = metadf.firstname + '_' + metadf.lastname
-        #     metadf['majority'] = ''
-        #     metadf.loc[(metadf.chamber=='H') & (metadf.party==house_majority),'majority'] = '1'
-        #     metadf.loc[(metadf.chamber=='H') & (metadf.party!=house_majority),'majority'] = '0'
-        #     metadf.loc[(metadf.chamber=='S') & (metadf.party==senate_majority),'majority'] = '1'
-        #     metadf.loc[(metadf.chamber=='S') & (metadf.party!=senate_majority),'majority'] = '0'
-        #     metadf['president'] = np.where(metadf.party==president,'1','0')
-        #     metadf = metadf[['speakerid','speech_id','namec','chamber','state','party','majority','president']]
-        #     df = df.merge(metadf, on='speech_id', how='right')
-        #     df = df[pd.notnull(df.speech)]
-        #     df = df[df.party.isin(['D','R'])]
+            # Collecting meta data.
+            metadf = pd.read_table(locbound + meta_name, sep="|", header=0, encoding='utf-8', dtype=object)
+            metadf = metadf[metadf.nonvoting=='voting']
+            metadf['namec'] = metadf.firstname + '_' + metadf.lastname
+            metadf['majority'] = ''
+            metadf.loc[(metadf.chamber=='H') & (metadf.party==house_majority),'majority'] = '1'
+            metadf.loc[(metadf.chamber=='H') & (metadf.party!=house_majority),'majority'] = '0'
+            metadf.loc[(metadf.chamber=='S') & (metadf.party==senate_majority),'majority'] = '1'
+            metadf.loc[(metadf.chamber=='S') & (metadf.party!=senate_majority),'majority'] = '0'
+            metadf['president'] = np.where(metadf.party==president,'1','0')
+            metadf = metadf[['speakerid','speech_id','namec','chamber','state','party','majority','president']]
+            df = df.merge(metadf, on='speech_id', how='right')
+            df = df[pd.notnull(df.speech)]
+            df = df[df.party.isin(['D','R'])]
 
-        #     # Saving as tab-separated values.
-        #     for idx, row in df.iterrows():
-        #         out_.write(
-        #             str(i) + '\t' +
-        #             str(row.speech_id) + '\t' +
-        #             row.speech + '\t' +
-        #             str(row.speakerid) + '\t' +
-        #             str(row.namec) + '\t' +
-        #             str(row.chamber) + '\t' +
-        #             str(row.state) + '\t' +
-        #             str(row.party) + '\t' +
-        #             str(row.majority) + '\t' +
-        #             str(row.president) + '\n'
-        #         )
-        #     print("Completed Congress %d" %i)
+            # Saving as tab-separated values.
+            for idx, row in df.iterrows():
+                out_.write(
+                    str(i) + '\t' +
+                    str(row.speech_id) + '\t' +
+                    row.speech + '\t' +
+                    str(row.speakerid) + '\t' +
+                    str(row.namec) + '\t' +
+                    str(row.chamber) + '\t' +
+                    str(row.state) + '\t' +
+                    str(row.party) + '\t' +
+                    str(row.majority) + '\t' +
+                    str(row.president) + '\n'
+                )
+            print("Completed Congress %d" %i)
 
         for i in range(112,115):
 
