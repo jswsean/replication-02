@@ -6,6 +6,7 @@ from sklearn.decomposition import PCA
 from gensim.models.doc2vec import Doc2Vec
 import sys
 sys.path.append('C:\\Users\\Sean Hambali\\Documents\\GitHub\\PPOL6081\\replication-02\\0_scripts\\lib')
+# sys.path.append('C:\\Users\\Sean Hambali\\Documents\\GitHub\\PPOL6081\\replication-02\\0_scripts\\original_lib')
 import labels 
 import plots 
 
