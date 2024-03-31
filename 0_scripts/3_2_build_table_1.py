@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 from gensim.models.doc2vec import Doc2Vec
 import sys
-# sys.path.append('C:\\Users\\Sean Hambali\\Documents\\GitHub\\PPOL6081\\replication-02\\0_scripts\\lib')
-sys.path.append('C:\\Users\\Sean Hambali\\Documents\\GitHub\\PPOL6081\\replication-02\\0_scripts\\original_lib')
+sys.path.append('C:\\Users\\Sean Hambali\\Documents\\GitHub\\PPOL6081\\replication-02\\0_scripts\\lib')
+# sys.path.append('C:\\Users\\Sean Hambali\\Documents\\GitHub\\PPOL6081\\replication-02\\0_scripts\\original_lib')
 import labels 
 import plots 
 import interpret
@@ -17,8 +17,8 @@ import interpret
 #=========================================================================================#
 
 # Loading pretrained model and label names:
-# model = Doc2Vec.load('2_build/models/usa/house')
-model = Doc2Vec.load('C:\\Users\\Sean Hambali\\Desktop\\DATA\\dataverse_files\\dataverse_files\\models\\house200')
+model = Doc2Vec.load('2_build/models/usa/house')
+# model = Doc2Vec.load('C:\\Users\\Sean Hambali\\Desktop\\DATA\\dataverse_files\\dataverse_files\\models\\house200')
 label_dict = labels.party_labels('USA')
 fullnames, parties, cols, mkers = labels.party_tags(model, 'USA')
 labs = [label_dict[p] for p in parties]
@@ -27,7 +27,7 @@ M = model.vector_size; P = len(parties)
 # Fitting PCA dimensionality reduction model for plotting:
 z = np.zeros((P,M))
 for i in range(P):
-    z[i,:] = model.docvecs[parties[i]]
+    z[i,:] = model.dv[parties[i]]
 pca = PCA(n_components = 2)
 Z = pd.DataFrame(pca.fit_transform(z), columns = ['dim1', 'dim2'])
 Z['label'] = labs
