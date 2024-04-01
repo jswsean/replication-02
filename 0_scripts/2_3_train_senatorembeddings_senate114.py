@@ -26,7 +26,7 @@ assert gensim.models.doc2vec.FAST_VERSION > -1
 
 class corpusIterator(object):
 
-    def __init__(self, inpath, bigram=None, trigram=None):
+    def __init__(self, inpath, house, bigram=None, trigram=None):
         if bigram:
             self.bigram = bigram
         else:
@@ -35,6 +35,7 @@ class corpusIterator(object):
             self.trigram = trigram
         else:
             self.trigram = None
+        self.house = house
         self.inpath = inpath
 
     def __iter__(self):
@@ -43,7 +44,8 @@ class corpusIterator(object):
             for line in f:
                 ls = line.split('\t')
                 congress = str(ls[0])
-                if congress == "114": 
+                chamber = ls[5]
+                if congress == "114" and chamber == self.house: 
                     text = ls[10].replace('\n','')
                     party = ls[7]
                     senator = ls[3]
@@ -60,15 +62,17 @@ class corpusIterator(object):
 
 class phraseIterator(object):
 
-    def __init__(self, inpath):
+    def __init__(self, inpath, house):
         self.inpath = inpath
+        self.house = house
 
     def __iter__(self):
         with open(self.inpath, 'r') as f:
             for line in f:
                 ls = line.split('\t')
                 congress = str(ls[0])
-                if congress == "114": 
+                chamber = ls[5]
+                if congress == "114" and chamber == self.house: 
                     text = ls[10].replace('\n','')
                     yield text.split()
 
@@ -81,9 +85,9 @@ if __name__=='__main__':
     inpath = '2_build/preprocessed_congress'
     savepath = '2_build/models/usa/'
 
-    phrases = Phrases(phraseIterator(inpath))
+    phrases = Phrases(phraseIterator(inpath, house='S'))
     bigram = Phraser(phrases)
-    tphrases = Phrases(bigram[phraseIterator(inpath)])
+    tphrases = Phrases(bigram[phraseIterator(inpath, house='S')])
     trigram = Phraser(tphrases)
 
     # To save phraser objects for future usage.
@@ -91,6 +95,6 @@ if __name__=='__main__':
     # trigram.save('.../phraser_trigrams')
 
     model0 = Doc2Vec(vector_size=200, window=20, min_count=50, workers=8, epochs=20)
-    model0.build_vocab(corpusIterator(inpath, bigram=bigram, trigram=trigram))
-    model0.train(corpusIterator(inpath, bigram=bigram, trigram=trigram), total_examples=model0.corpus_count, epochs=model0.epochs)
-    model0.save(savepath + 'congress114')
+    model0.build_vocab(corpusIterator(inpath, house='S', bigram=bigram, trigram=trigram))
+    model0.train(corpusIterator(inpath, house='S', bigram=bigram, trigram=trigram), total_examples=model0.corpus_count, epochs=model0.epochs)
+    model0.save(savepath + 'senate114')
