@@ -13,7 +13,7 @@ import re
 # Figure 5: Ideological Placement of Senators (114th Congress)
 #=========================================================================================#
 # Loading model with legislator level embeddings
-senator_model = Doc2Vec.load('2_build/models/usa/congress114')
+senator_model = Doc2Vec.load('2_build/models/usa/senate114')
 dems = [k for k in senator_model.dv.index_to_key if "_D" in k]
 reps = [k for k in senator_model.dv.index_to_key if "_R" in k]
 sm_parties = dems + reps
@@ -26,4 +26,4 @@ Zsm = pd.DataFrame(pca_sm.fit_transform(zsm), columns = ['dim1', 'dim2'])
 
 # Figure 5
 plots.plot_5(Zsm, dems, reps, savepath='3_docs/figures/figure5.pdf')
-print('Saved Figure 5 to file figures/figure5.pdf')
+print('Saved Figure 5 to file 3_docs/figures/figure5.pdf')
