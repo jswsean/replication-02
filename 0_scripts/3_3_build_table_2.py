@@ -32,6 +32,27 @@ pca = PCA(n_components = 2)
 Z = pd.DataFrame(pca.fit_transform(z), columns = ['dim1', 'dim2'])
 Z['label'] = labs
 
+# Load other country models: 
+# UK 
+ukmodel = Doc2Vec.load('2_build/models/uk/uk_model')
+uk_dict = labels.party_labels('UK')
+uknames, ukparties, ukcols, ukmkers = labels.party_tags(ukmodel, 'UK')
+uklabs = [uk_dict[p] for p in ukparties]
+Muk = ukmodel.vector_size; Puk = len(ukparties)
+
+# Fitting PCA dimensionality reduction model for plotting UK results:
+zuk = np.zeros((Puk,Muk))
+for i in range(Puk):
+    zuk[i,:] = ukmodel.dv[ukparties[i]]
+pca_uk = PCA(n_components = 2)
+Zuk = pd.DataFrame(pca_uk.fit_transform(zuk), columns = ['dim1', 'dim2'])
+Zuk['label'] = uklabs
+
+# Re-orienting the first axis for substantive interpretation:
+if Zuk[Zuk.label=='Labour 2010'].dim1.values[0] > Zuk[Zuk.label=='Cons 2010'].dim1.values[0]:
+    Zuk['dim1'] = Zuk.dim1 * (-1)
+
+
 # Add senate model, and fit PCA dimensionality reduction model for Senate:
 senmodel = Doc2Vec.load('2_build/models/usa/senate')
 zsen = np.zeros((P,M))
@@ -44,13 +65,15 @@ Zsen['label'] = labs
 # Joining projections with external gold standards
 gold_house = pd.read_csv('1_raw/usa/goldstandard_house.csv').merge(Z, on='label', how='left')
 gold_senate = pd.read_csv('1_raw/usa/goldstandard_senate.csv').merge(Zsen, on='label', how='left')
+gold_uk = pd.read_csv('1_raw/uk/goldstandard_uk.csv').merge(Zuk, on='label', how='left')
 
 gold_scores = ['voteview', 'experts_stand', 'rile', 'vanilla', 'legacy']
 
 # Temporarily only have 2 tuples, but should have 4, including can and UK
 countries = [('US House', gold_house),
-             ('US Senate', gold_senate)]
-results = np.zeros(( 10, 2 ), dtype=object)
+             ('US Senate', gold_senate), 
+             ('Britain', gold_uk)]
+results = np.zeros(( 10, 3 ), dtype=object)
 
 for idx, (c, df) in enumerate(countries):
     jdx = 0
