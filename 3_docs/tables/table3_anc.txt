@@ -1,0 +1,7 @@
+Table 3: Accuracy of Party Placement in the US House: WordFish and Party Embeddings
+----------------------------------------------------------------------------
+| Metric            | 1921-2016   | 1921-2016   | 2007-2016   | 2007-2016   |
+|-------------------+-------------+-------------+-------------+-------------|
+|                   | WordFish    | Embeddings  | WordFish    | Embeddings  |
+| Correlation       | 0.032       | 0.854       | 0.023       | 0.874       |
+| Pairwise Accuracy | 47.70%      | 61.21%      | 55.56%      | 62.22%      |
