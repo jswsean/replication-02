@@ -1,0 +1,10 @@
+Table 4: Accuracy of Senator Ideological Placement
+---------------------------------------------------------
+| Gold Standard   |   Correlation | Pairwise Accuracy   |
+|-----------------+---------------+---------------------|
+| DW-NOMINATE     |         0.875 | 80.88%              |
+| Nokken-Poole    |         0.88  | 80.64%              |
+| ACU 2016        |         0.854 | 74.50%              |
+| ACU 2015        |         0.856 | 70.33%              |
+| ACU Life        |         0.89  | 81.65%              |
+| GovTrack        |         0.919 | 83.72%              |

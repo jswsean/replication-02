@@ -8,12 +8,10 @@
 *.csv
 *.dta
 
-# Specific files
-*.txt
-
 # Specific folders
 3_docs/paper
 1_raw
 2_build/congress
 2_build/preprocessed_congress
 0_scripts/original_lib
+requirements.txt
