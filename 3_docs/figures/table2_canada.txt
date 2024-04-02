@@ -1,0 +1,14 @@
+Table 2: Accuracy of Party Placement against Gold Standards
+-----------------------------------------------------------------------------------
+| Gold Standard   | Metric      | Canada   |
+|-----------------+-------------+----------|
+| Voteview        | Correlation |          |
+| Voteview        | Accuracy    |          |
+| Experts Surveys | Correlation | 0.116    |
+| Experts Surveys | Accuracy    | 19.70%   |
+| rile            | Correlation | -0.131   |
+| rile            | Accuracy    | 20.35%   |
+| vanilla         | Correlation | -0.074   |
+| vanilla         | Accuracy    | 20.66%   |
+| legacy          | Correlation | -0.180   |
+| legacy          | Accuracy    | 19.49%   |
