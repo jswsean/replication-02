@@ -57,7 +57,13 @@ def party_tags(model, country, grayscale=False):
         fullnames = [USA_NAMES['dem']]*len(democrats) + [USA_NAMES['rep']]*len(republicans)
         return (fullnames, parties, cols, mkers)
     elif country=='Canada':
-        ndp = [d for d in model.docvecs.index_to_key if 'NDP' in d]
+        # ndp = [d for d in model.docvecs.index_to_key if 'NDP' in d]
+        # bloc = [d for d in model.docvecs.index_to_key if 'Bloc' in d]
+        # liberals = [d for d in model.docvecs.index_to_key if 'Liberal' in d]
+        # conservatives = [d for d in model.docvecs.index_to_key if 'Conservative' in d]
+        # reform = [d for d in model.docvecs.index_to_key if 'Reform-Alliance' in d]
+
+        ndp = [d for d in model.docvecs.index_to_key if 'NDP' in d or 'New Democratic Party' in d]
         bloc = [d for d in model.docvecs.index_to_key if 'Bloc' in d]
         liberals = [d for d in model.docvecs.index_to_key if 'Liberal' in d]
         conservatives = [d for d in model.docvecs.index_to_key if 'Conservative' in d]
