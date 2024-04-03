@@ -11,7 +11,7 @@ assert gensim.models.doc2vec.FAST_VERSION > -1
 
 ''' Script to train word embedding model for UK corpus'''
 
-df  = pd.read_hdf('data/processed_uk.h5','s')    
+df  = pd.read_hdf('2_build/processed_uk.h5','s')    
 
 class corpusIterator:
     def __init__(self, df, bigram=None, trigram=None):
@@ -62,4 +62,4 @@ trigram = Phraser(tphrases)
 model0 = Doc2Vec(vector_size=200, window=20, min_count=50, workers=8, epochs=5)
 model0.build_vocab(corpusIterator(df, bigram=bigram, trigram=trigram))
 model0.train(corpusIterator(df, bigram=bigram, trigram=trigram), total_examples=model0.corpus_count, epochs=model0.epochs)
-model0.save('outputs/uk_model')
+model0.save('2_build/models/uk_model')
