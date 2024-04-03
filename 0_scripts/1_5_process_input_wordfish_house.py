@@ -12,7 +12,7 @@ texts = []
 parties = []
 counter = 0
 
-with open("data/preprocessed_congress", 'r') as f:
+with open("2_build/preprocessed_congress", 'r') as f:
     for line in f:
         ls = line.split('\t')
         chamber = ls[5]
@@ -45,4 +45,4 @@ df2.reset_index(inplace = True)
 
 df2['year'] = df2.session.astype(str).map(usa_index_toyear)
 
-df2.to_excel('outputs/wf_set.xlsx', index = False)
+df2.to_excel('2_build/wf_set.xlsx', index = False)
