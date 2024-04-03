@@ -37,7 +37,7 @@ def mscatter(x, y, ax=None, m=None, **kw):
 
     return sc
 
-def plot_2a(Z, labels, cols, mkers, savepath='figure2a.pdf', xlim=(-20, 20)):
+def plot_2a(Z, labels, cols, mkers, savepath='figure2a.pdf', xlim=(-15, 15)):
 
     plt.figure(figsize=(22,15))
     mscatter(Z.dim1, Z.dim2, alpha=0.6, color=cols, m=mkers, s = 400)
