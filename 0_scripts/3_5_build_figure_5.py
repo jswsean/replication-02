@@ -24,6 +24,9 @@ for i in range(nsm):
 pca_sm = PCA(n_components=2)
 Zsm = pd.DataFrame(pca_sm.fit_transform(zsm), columns = ['dim1', 'dim2'])
 
+# Reverse dim1 axis 
+Zsm['dim1'] = Zsm['dim1'] * (-1)
+
 # Figure 5
 plots.plot_5(Zsm, dems, reps, savepath='3_docs/figures/figure5.pdf')
 print('Saved Figure 5 to file 3_docs/figures/figure5.pdf')
