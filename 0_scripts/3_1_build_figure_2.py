@@ -46,10 +46,10 @@ if Z[Z.label=='Dem 2015'].dim2.values[0] < Z[Z.label=='Rep 2015'].dim2.values[0]
 # Reproducing Figure 2
 # 2a
 plots.plot_2a(Z, labs, cols, mkers, savepath='3_docs/figures/figure2a.pdf')
-print("Saved Figure 2a to file figures/figure2a.pdf")
+print("Saved Figure 2a to file 3_docs/figures/figure2a.pdf")
 # 2b
 plots.plot_timeseries(Z, fullnames, cols, dimension=1, savepath='3_docs/figures/figure2b.pdf', legend='upper left')
-print("Saved Figure 2b to file figures/figure2b.pdf")
+print("Saved Figure 2b to file 3_docs/figures/figure2b.pdf")
 # 2c
 plots.plot_timeseries(Z, fullnames, cols, dimension=2, savepath='3_docs/figures/figure2c.pdf', legend='lower left')
-print("Saved Figure 2c to file figures/figure2c.pdf")
+print("Saved Figure 2c to file 3_docs/figures/figure2c.pdf")

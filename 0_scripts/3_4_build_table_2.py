@@ -31,6 +31,10 @@ pca = PCA(n_components = 2)
 Z = pd.DataFrame(pca.fit_transform(z), columns = ['dim1', 'dim2'])
 Z['label'] = labs
 
+# Re-orienting the axes for substantive interpretation:
+if Z[Z.label=='Dem 2015'].dim1.values[0] > Z[Z.label=='Rep 2015'].dim1.values[0]:
+    Z['dim1'] = Z.dim1 * (-1)
+
 # Add senate model, and fit PCA dimensionality reduction model for Senate:
 senmodel = Doc2Vec.load('2_build/models/usa/senate')
 zsen = np.zeros((P,M))

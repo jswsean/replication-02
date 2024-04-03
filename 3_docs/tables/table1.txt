@@ -2,17 +2,17 @@ Table 1: Interpreting PCA Axes
 --------------------------------------------------------------------------------
 Words Associated with Positive Values (Right) on First Component:
 --------------------------------------------------------------------------------
-john raker, finis garrett, martin foster, asbury lever, william cox, william borland, james clark, scott ferris, lemuel padgett, james hay, warren gard, joseph sherley, charles bartlett, henry barnhart, john linthicum, john moon, thomas blanton, william rucker, james slayden, thetus sims
+nebraska, obamacare, savings account, socialized medicine, bureaucracies, bureaucracy, missouri river, bureaucratic, wheat, feed grains, south dakota, feed grain, socialism, forest reserves, free enterprise, irs, redtape, yugoslavia, savings accounts, hogs
 --------------------------------------------------------------------------------
 Words Associated with Negative Values (Left) on First Component:
 --------------------------------------------------------------------------------
-martin madden, william stafford, richard austin, james tawney, joseph moore, julius kahn, thomas butler, leonidas dyer, fiorello guardia, gilbert haugen, edward denison, william wood, carl chindblom, henry cooper, philip campbell, halvor steenerson, james mann, harold knutson, daniel anthony, joseph walsh
+wealthiest, south african, congressional black caucus, racism, decent housing, civil rights, voting rights, civil rights movement, south africa, poor elderly, message announced, infant mortality, millionaires, africanamericans, blacks, impoverished, cbc, rich poor, segregated, chile
 --------------------------------------------------------------------------------
 Words Associated with Positive Values (North) on Second Component:
 --------------------------------------------------------------------------------
-message announced, national aeronautics, wealthiest, agreed amended, silvio conte, infant mortality, john fitzgerald, disagree senate, pell grants, rept referred, permitted sit, racism, minimum wage, sherwood boehlert, william holman, insofar, portland, urban development, black caucus, william goodling
+city detroit, mich, toledo, seattle, plant closing, balance, hartford, rochester, akron, chrysler, northern ireland, freetrade, west germany, taa, western new york, layoff, retraining, vermont, duluth, niagara falls
 --------------------------------------------------------------------------------
 Words Associated with Negative Values (South) on Second Component:
 --------------------------------------------------------------------------------
-bureaucracy, bureaucracies, regimentation, obamacare, bureaucrats, charles stenholm, reserve notes, captive nations, bureaucratic, gillespie montgomery, savings account, harold volkmer, centralization power, centralization, overregulation, handouts, supergrades, local selfgovernment, elliott levitas, norman dicks
+oklahoma, everglades, georgians, fort benning, textile imports, parish, georgian, civilized tribes, courthouse, gainesville, fort smith, longstaple cotton, judge, tyrant, savannah river, shreveport, southeast, fluecured tobacco, happiness, baptist church
 --------------------------------------------------------------------------------
