@@ -92,7 +92,7 @@ if __name__=="__main__":
             idx=0
             for line in infile_:
                 text = line.split('\t')[2]
-                new_text = clean_text(line, country)
+                new_text = clean_text(text, country)
                 if new_text!='':
                     out_.write(line[:-1] + '\t' + new_text + '\n')
                 idx+=1
