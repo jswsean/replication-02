@@ -19,8 +19,8 @@ import os
 # # Figure 4: Comparison with WordFish Estimates
 # #=========================================================================================#
 # # Loading fitted WordFish models
-wf_full = pd.read_excel("2_build/data/house_document_scores_pivoted.xlsx")
-wf_short = pd.read_excel("2_build/data/house_document_scores_mostrecentpivoted.xlsx")
+wf_full = pd.read_excel("2_build/house_document_scores_pivoted.xlsx")
+wf_short = pd.read_excel("2_build/house_document_scores_mostrecentpivoted.xlsx")
 
 pfull = wf_full[['year','score_R','score_D']]
 pfull.rename(columns = {'score_R':'republican', 'score_D':'democrat'}, inplace = True)

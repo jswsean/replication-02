@@ -16,7 +16,7 @@ pacman::p_load(tidyverse,
 ### Warning: Large Memory requirement 
 
 
-df = read_excel('data/wf_set.xlsx')
+df = read_excel('2_build/wf_set.xlsx')
 
 
 corp <- corpus(df, text_field="text")
@@ -44,13 +44,13 @@ document_scores2 <- wordfish$theta
 df$score = document_scores
 df$score2 = document_scores2
 
-write_xlsx(df, "outputs/house_document_scores.xlsx")
+write_xlsx(df, "2_build/house_document_scores.xlsx")
 
 #create pivoted df. used later in creating figure 4
 df_wide_1 <- df %>% select(-text) %>%
   pivot_wider(names_from = party, values_from =c(score, score2), names_sep = "_") 
 
-write_xlsx(df_wide_1, "outputs/house_document_scores_pivoted.xlsx")
+write_xlsx(df_wide_1, "2_build/house_document_scores_pivoted.xlsx")
 ###########################################################################################################
 
 ########### Redo same process for most recent five congresses (2007 - 2016)
@@ -77,9 +77,9 @@ document_scores2 <- tmod_wf2$theta
 df$score = document_scores
 df$score2 = document_scores2
 
-write_xlsx(df, "outputs/house_document_scores_mostrecent.xlsx")
+write_xlsx(df, "2_build/house_document_scores_mostrecent.xlsx")
 
 df_wide_1 <- df %>% select(-text) %>%
   pivot_wider(names_from = party, values_from =c(score, score2), names_sep = "_") 
 
-write_xlsx(df_wide_1, "outputs/house_document_scores_mostrecentpivoted.xlsx")
+write_xlsx(df_wide_1, "2_build/house_document_scores_mostrecentpivoted.xlsx")

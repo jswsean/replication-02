@@ -19,9 +19,9 @@ import os
 # #=========================================================================================#
 
 ##anc subscript wordfish estimates with anchors 
-wf_short= pd.read_excel("2_build/data/house_document_scores_mostrecent.xlsx")
+wf_short= pd.read_excel("2_build/house_document_scores_mostrecent.xlsx")
 wf_short.drop(columns = 'text', inplace = True)
-wf_full= pd.read_excel("2_build/data/house_document_scores.xlsx")
+wf_full= pd.read_excel("2_build/house_document_scores.xlsx")
 wf_full.drop(columns = 'text', inplace = True)
 
 wf_full['party'] = np.where(wf_full['party'] == 'D', 'Dem', 'Rep')
