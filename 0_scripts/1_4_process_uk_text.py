@@ -13,7 +13,7 @@ Script to read and pocess raw UK hansard corpus. Output is hdf5 file of datafram
 
 '''
 
-df = pd.read_csv("data/uk_hansard_1935_2014_BvW_2022.tsv", sep='\t', usecols=['year', 'parliament', 'party', 'speech_text'] )
+df = pd.read_csv("1_raw/uk/uk_hansard_1935_2014_BvW_2022.tsv", sep='\t', usecols=['year', 'parliament', 'party', 'speech_text'] )
 
 def clean_text(text):
     import pandas as pd
@@ -53,4 +53,4 @@ df['cleaned_text'] = df['speech_text'].parallel_apply(clean_text)
 
 df_export = df[['year', 'parliament', 'party', 'cleaned_text']]
 
-df_export.to_hdf('outputs/processed_uk_corpus.h5', key = 's')
+df_export.to_hdf('2_build/processed_uk_corpus.h5', key = 's')
