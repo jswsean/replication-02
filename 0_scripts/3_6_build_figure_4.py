@@ -9,10 +9,10 @@ import matplotlib.pyplot as plt
 from tabulate import tabulate
 from sklearn.decomposition import PCA
 from gensim.models.doc2vec import Doc2Vec
-import utils.labels as labels
-import utils.plots as plots
-from utils.interpret import Interpret
-from utils.accuracy import pairwise_accuracy
+import lib.labels as labels
+import lib.plots as plots
+from lib.interpret import Interpret
+from lib.accuracy import pairwise_accuracy
 import os
 
 # #=========================================================================================#
