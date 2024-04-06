@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 from tabulate import tabulate
 from sklearn.decomposition import PCA
 from gensim.models.doc2vec import Doc2Vec
-import utils.labels as labels
-import utils.plots as plots
+import lib.labels as labels
+import lib.plots as plots
 
 #=========================================================================================#
 # Figure 3a: Party Placement in the UK (1935-2014)
